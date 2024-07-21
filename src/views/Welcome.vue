@@ -2,11 +2,21 @@
 import SignupForm from "@/components/SignupForm.vue";
 import SignInForm from "@/components/SignInForm.vue";
 import {ref} from "vue";
+import {useRouter} from "vue-router";
 
+const router = useRouter()
 const typeForm = ref('sign-in');
 
 const handleNavButton = (e) => {
   typeForm.value = e.currentTarget.getAttribute('data-type');
+}
+
+const enterChat = () => {
+  router.push("/chatroom");
+}
+
+const moveToSignIn = ()=>{
+  typeForm.value = "sign-in";
 }
 </script>
 
@@ -22,8 +32,8 @@ const handleNavButton = (e) => {
       </div>
     </nav>
 
-    <SignupForm v-if="typeForm==='sign-up'"></SignupForm>
-    <SignInForm v-if="typeForm==='sign-in'"></SignInForm>
+    <SignupForm v-if="typeForm==='sign-up'" @signup="moveToSignIn"></SignupForm>
+    <SignInForm v-if="typeForm==='sign-in'" @login="enterChat"></SignInForm>
   </div>
 </template>
 <style>
