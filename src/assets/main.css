@@ -26,3 +26,8 @@ button {
     border-radius: 20px;
     padding: 10px 20px;
 }
+
+.error {
+    color: #ff3f80;
+    font-size: 14px;
+}
